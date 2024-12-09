@@ -3,7 +3,7 @@ const products = [
     {
       title: "Wireless Headphones",
       description: "Noise-cancelling over-ear headphones with 40 hours of playtime.",
-      year: 2023,
+      year: 2024,
       price: 199.99,
       image: "https://example.com/images/headphones.jpg",
       isDiscounted: true,
@@ -29,7 +29,7 @@ const products = [
     {
       title: "Gaming Laptop",
       description: "High-performance laptop with RTX 3060 GPU and 16GB RAM.",
-      year: 2023,
+      year: 2024,
       price: 1299.99,
       image: "https://example.com/images/laptop.jpg",
       isDiscounted: true,
@@ -94,7 +94,7 @@ const products = [
     {
       title: "Fitness Tracker",
       description: "Lightweight tracker with step count, calorie burn, and sleep monitoring.",
-      year: 2021,
+      year: 2024,
       price: 69.99,
       image: "https://example.com/images/fitness-tracker.jpg",
       isDiscounted: false,
@@ -131,5 +131,57 @@ const products = [
       quantity: 40
     }
   ];
+  console.log('Solutions:');
 
-// write code here
+  // schema: 
+
+  // {
+  //   title: string,
+  //   description: string,
+  //   year: number,
+  //   price: number,
+  //   image: string,
+  //   isDiscounted: boolean,
+  //   isRefurbished: boolean,
+  //   discount: {
+  //     discountAvailable: string
+  //   },
+  //   quantity: number
+  // }
+
+
+// 1. Console Log All Products
+// products.forEach(function(item){
+//    console.log(`${item.title} - $${item.price}`);
+// });
+
+products.forEach((item) => console.log(`${item.title} - $${item.price}`));
+
+// 2. Filter Products with Long Descriptions
+console.log('Products with long description:');
+
+const longDescArray = products.filter((item) => item.description.length >= 30);
+longDescArray.forEach((item, index) => console.log(` ${index + 1} - ${item.title}`));
+
+
+
+// 3. Filter Products by Price Range
+console.log('Products in price range of $200 and $400:');
+const priceRangeProducts = products.filter((item) => item.price >= 200 && item.price <= 400);
+priceRangeProducts.forEach((item, index) => console.log(` ${index + 1} - ${item.title}`));
+
+// 4. Filter Discounted Products
+console.log('Discounted products:');
+const discountedProducts = products.filter((item, index) => item.isDiscounted === true);
+discountedProducts.forEach((item, index) => console.log(` ${index + 1} - ${item.title}`));
+
+// 5. Filter Products with 15% or More Discount
+console.log('Products with more than 15% discount:');
+const largeDiscountProducts = products.filter((item) => parseInt(item.discount.discountAvailable) >= 15);
+largeDiscountProducts.forEach((item, index) => console.log(` ${index + 1} - ${item.title}: ${item.discount.discountAvailable}`));
+
+
+// 6. Filter New Products
+console.log('New products:');
+const newProducts = products.filter((item) => item.year >= 2024);
+newProducts.forEach((item, index) => console.log(` ${index + 1} - ${item.title}`));
